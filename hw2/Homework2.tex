@@ -1,11 +1,11 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry} 
+\usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsthm,amssymb,amsfonts}
 \usepackage{graphicx}
- 
+
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
- 
+
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 %If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
@@ -14,55 +14,262 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 
 \begin{document}
- 
+
 %\renewcommand{\qedsymbol}{\filledbox}
 %Good resources for looking up how to do stuff:
 %Binary operators: http://www.access2science.com/latex/Binary.html
 %General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
 %Or just google stuff
- 
+
 \title{AST 231: Problem Set 2}
-\author{Your Name Goes Here}
+\author{Jonas Powell}
 \maketitle
- 
+
 \begin{problem}{1}
 Calculate the distance to a star with the following observed characteristics. Be sure to state where you obtained any relevant information that you used in the calculation. V = 12.25, B-V = +0.32, Spectral Type = A0V. What is the parallax angle for this star?
 \end{problem}
 
 \begin{answer}{1}
-Your answer goes here. 
+  We would like to quantify how much the source has been reddened from its true color. From Wikipedia, we can quantify this as:
+\begin{align}
+  R(V) &= \frac{A(V)}{A(B) - A(V)} \notag \\
+       &= \frac{A(V)}{ (m_B - m_V) - (B-V)}
+\end{align}
+
+where the A terms represent the absorption in each respective band. Using Vega as an example A0V star, using Wikipedia again we find that the color $B-V = 0.00$ and the absolute magnitude $V = 0.026$. Then, using the given B-V value, we find $m_B - m_V = 0.32$. Finally, also from Wikipedia, we find that $R = 3.1$ is a typical value for R. Consequently, we can solve for $A(V)$.
+\begin{align*}
+  A(V) &= 3.1 \times 0.32 \\
+       &= 0.99
+\end{align*}
+
+From class notes we know:
+\begin{align}
+  V - m_V = 5 \log {d} - 5 + A_V
+\end{align}
+
+Rearranging this to solve for $d$, we find:
+
+\begin{align}
+  d &= 10^{ \frac{V - m_V - A_V + 5}{5}} \notag \\
+    &= 10^{ \frac{12.25 - 0.026 - 0.99 + 5}{5}} \notag \\
+    &= 1765.22 \text{ parsecs}
+\end{align}
+
+To get the parallax angle value for this, we note that:
+\begin{align}
+  \theta_{parallax} &= \frac{1}{d(\text{parsecs})} \notag  \\
+                    &= \frac{1}{1765} \notag \\
+                    &= 0.5 \text{ milli-arcseconds}
+\end{align}
+
 \end{answer}
 
+\bigskip
+\bigskip
+
 \begin{problem}{2}
-Calculate the temperature at which the number density of hydrogen atoms in the first excited state is $1 \over 20$ of the number density of hydrogen atoms in the ground (fundamental) state. [Note: this is just a small variation of Question 1.7 from your textbook and the answer to that question is provided in the book. So, an intelligent strategy would be -- do that problem first and be sure you get the right answer.]  
+Calculate the temperature at which the number density of hydrogen atoms in the first excited state is $1 \over 20$ of the number density of hydrogen atoms in the ground (fundamental) state. [Note: this is just a small variation of Question 1.7 from your textbook and the answer to that question is provided in the book. So, an intelligent strategy would be -- do that problem first and be sure you get the right answer.]
 \end{problem}
 
 \begin{answer}{2}
-Your answer goes here. 
+
+Using the Boltzmann equation, we being our setup:
+
+\begin{equation}
+  \frac{n_{2}}{n_{1}} = \frac{g_{2}}{g_{1}} \cdot e^{- \frac{E_{1} - E_{2}}{kT}}
+\end{equation}
+
+To find $E_{i}$, we use the canonical equation for atomic energies:
+\begin{equation}
+  E_n = -13.6(1 - \frac{1}{n^2})
+\end{equation}
+
+This immediately gives us that
+\begin{equation}
+  E_0 = -13.6(1-1) = 0
+\end{equation}
+
+\begin{align}
+  E_0 &= -13.6(1-\frac{1}{2^2}) \notag  \\
+      &= 10.2 \text{ eV} \notag  \\
+      &= 1.634 \times 10^{-18} \text{ Joules}
+\end{align}
+
+To find $g_n$, we recall from the textbook that:
+\begin{equation}
+  g_n = 2 n^2
+\end{equation}
+
+Rearranging, we get:
+\begin{align}
+  T &= \frac{E_2}{K \log{\frac{1}{80}}}  \notag \\
+    &= 27020 \text{ Kelvin}
+\end{align}
+
 \end{answer}
+\bigskip
+\bigskip
 
 \begin{problem}{3}
 What is the ionization fraction of HI at a depth where T = 8000 K and P = 140 dyne/cm$^2$ in a star composed of pure hydrogen. You may approximate the partition function of neutral hydrogen, U$_I$ in the book's notation, to be equal to the statistical weight of the ground state, namely g = 2. [Note that this is a small variation of Question 1.9 from your textbook, so try that one first and make sure you get the answer given in the back of the book.]
 \end{problem}
 
 \begin{answer}{3}
-Your answer goes here. 
+For this problem, let us begin with the Saha equation:
+
+\begin{equation}
+  \frac{n_{i+1}}{n_i} = \frac{1}{n_e} (\frac{2 \pi m_e kT}{h^2})^{3 \over 2} \frac{2 U_{i+1}}{U_i} e^{\frac{-E_{ion}}{kT}  \notag
+\end{equation}
+
+This looks like it will be a bit of a pain since we don't know $n_e$, but it really isn't too bad, since we can recognize that the number of free electrons must be equal to the number of ionized atoms since those ions were the sources of the free electrons.
+
+\begin{equation}
+  n_{e} = n_{2}  \notag
+\end{equation}
+
+\begin{equation}
+  n_{total} = n_{1} + 2 n_{2}
+\end{equation}
+
+Since the atom begins in the ground state, the energy barrier that the electron must overcome to ionize is $E_{ion} = 13.6 eV$. Consequently, the exponential term becomes:
+
+\begin{align}
+  e^{\frac{-E_{ion}}{kT}} &= e^{-19.73} \notag  \\
+                          &= 2.71 \times 10^{-9}
+\end{align}
+
+Furthermore, we can evaluate the first term on the right hand side of the equation since all its terms are constants:
+
+\begin{equation}
+  (\frac{2 \pi m_e kT}{h^2})^{3 \over 2} = 1.728 \times 10^{27} \text{ m$^{-3}$}
+\end{equation}
+
+
+
+We can also notice that, since we let $U_1 = 2$ and $U_2 = 1$, per the problem's givens and per textbook respectively, that the $U$ term goes to unity. Therefore, we can rewrite the Saha equation as:
+
+\begin{align}
+  \alpha \equiv \frac{n_{2}^2}{n_1} &= 1.728 \times 10^{27}  \times 2.71 \times 10^{-9} \text{ m$^{-3}$} \notag \\
+                      &= 4.68 \times 10^{18} \text{ m$^{-3}$}
+\end{align}
+
+This, however, is a little bit of a bummer since, although our desired final value - $\frac{n_2}{n_1}$ - is in sight, we are still left with an extra multiple of $n_2$ in the numerator. However, we can recall that the sum of the number densities can be represented as some $n_{total}$ which we can easily solve for rearranging the ideal gas law:
+
+\begin{align}
+  n_{total} &= \frac{P}{kT} \notag  \\
+            &= n_1 + n_2 + n_{\text{free electrons}}  \notag  \\
+            &= n_1 + 2n_2 \notag  \\
+            &= 1.27 \times 10^{20} \text{ m$^{-3}$}
+\end{align}
+
+Drawing on (17), we find
+
+\begin{align}
+  n_2 = \sqrt{\alpha n_1}
+\end{align}
+
+\begin{align}
+n_{total} &= n_1 + n_2 \notag \\
+          &= n_1 + \sqrt{\alpha n_1} \notag \\
+          &= 1.27 \times 10^{20} \text{ m$^{-3}$}
+\end{align}
+
+Rearranging, we can get $n_1$, $n_2$, and finally our final ionization fraction:
+
+\begin{align}
+n_1 = 8.67 \times 10^{19} \text{ m$^{-3}$}
+\end{align}
+
+\begin{align}
+n_2 &= \frac{n_{total} - n_1}{2} \notag \\
+    &= \frac{1.27 \times 10^{20} - 8.67 \times 10^{19}}{2} \notag \\
+    &= 2.02 \times 10^{19}
+\end{align}
+
+\begin{align}
+  \frac{n_2}{n_1} &= 0.23 \notag \\
+                  &= 23 \%
+\end{align}
 \end{answer}
+\bigskip
+\bigskip
+
+
+
 
 \begin{problem}{4}
 Calculate the P(r) inside a sphere of radius R$_\star$ with a constant density $\rho$. (This is Question 2.2 from the book.)
 \end{problem}
 
 \begin{answer}{4}
-Your answer goes here. As always, be sure to show the full derivation.
+
+We will begin with our familiar equation for hydrostatic equilibrium and work outward from there:
+
+\begin{equation}
+  \frac{dP(r)}{dr} = -\rho \frac{GM}{r^2}
+\end{equation}
+
+We substitute for mass using density and radius:
+\begin{equation}
+  M = \frac{4}{3} \pi r^3 \rho
+\end{equation}
+
+Combining the two and integrating, we find:
+
+\begin{align}
+  P(r) &= - \frac{4 \pi}{3} G \rho^2 \int_{R_{\star}}^{r} r dr \notag \\
+       &= - \frac{2 \pi}{3} G \rho^2 (r^2 - R_{\star}^2) \notag \\
+       &= \frac{2 \pi}{3} G \rho^2 (R_{\star}^2 - r^2)
+\end{align}
+
 \end{answer}
+\bigskip
+\bigskip
+
+
+
 
 \begin{problem}{5}
 Calculate the gravitational potential energy of a fictitious star which has M$_\star$ and radius R$_\star$, that has a density profile $\rho(r) = {\rho_c (1 - {r \over R_\star})}$. Give your answer in terms of the central density, $\rho_c$, and in terms of M$_\star$ and R$_\star$. (This is only slightly different from Question 2.3 in the book.)
 \end{problem}
 
 \begin{answer}{5}
-Your answer goes here. Be sure to show all the steps!
+
+We begin by using the gravitational potential energy equation given in class:
+\begin{align}
+  \Omega = \int_{0}^{R_{\star}} \frac{GM(r) m_{shell}}{r} \cdot \rho(r) dr
+\end{align}
+
+We must find an expression for M(r), the mass enclosed within the sphere of radius r. To do so, we can draw on the class mass conservation equation, combining it with the given equation for density, which notes that:
+
+\begin{align}
+  \frac{dM}{dr} &= 4 \pi r^2 \rho(r) \notag \\
+                &= 4 \pi r^2 \rho_c(1 - \frac{r}{R_{\star}})
+\end{align}
+
+\begin{align}
+  M(r) &= \int_{0}^{r} 4 \pi r^2 \rho_{c}[r^2 - \frac{r^3}{R_{\star}}] \notag \\
+       &= 4\pi r^2 \rho_{c} [\frac{r^3}{3} - \frac{r^4}{4R_{\star}}]
+\end{align}
+
+We also note that the mass of the infinitesimal shell we will integrate over is given by:
+
+\begin{align}
+  m_{shell} = 4 \pi r^2 \rho(r)
+\end{align}
+
+
+Plugging (25) and (26) into (24) and integrating, we find:
+
+\begin{align}
+  \Omega &= \int_{0}^{R_{\star}} \frac{GM(r) m_{shell}}{r} \cdot \rho(r) dr \notag \\
+         &= \int_{0}^{R_{\star}} \frac{G}{r} 4 \pi \rho_c [\frac{r^3}{3} - \frac{r^4}{4 R_{\star}}] \cdot 4\pi r^2 \rho_c (1 - \frac{r}{R_{\star}}) dr \\
+         &= \frac{26}{315} G \pi^2 \rho_{c}^2 R_{\star}^5
+\end{align}
+
+
+
+
 \end{answer}
- 
+
 \end{document}
