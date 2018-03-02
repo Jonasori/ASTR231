@@ -1,0 +1,199 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+
+\title{AST 231: Problem Set 3}
+\author{Answer Sheet}
+\maketitle
+
+\begin{problem}{1}
+What is the solid angle subtended by the portion of the celestial sphere between right ascension 0 hr and 1 hr and between declination 59 degrees and 60 degrees? Give your answer in square degrees. As always, show your work.
+\end{problem}
+
+\begin{answer}{1}
+
+We know the equation of solid angle to be:
+\begin{align*}
+  d \Omega &= \sin{\theta} d\theta d\phi \\
+\end{align*}
+
+We can easily convert 1 hour into 0.26 radians. Then we integrate to find $\Omega$ alone:
+\begin{align*}
+  \Omega &= \int_{59} ^{60} \sin{\theta} d\theta \int_{0} ^{0.26} d\phi \\
+         &= 3.9 \times 10^{-4} \text{ radians} \times (\frac{180}{\pi})^2 \\
+         &= 12.8 \text{ square degrees}
+\end{align*}
+
+
+
+
+
+\end{answer}
+
+
+
+
+
+\begin{problem}{2}
+
+Estimate the mean free path of a photon in the stellar interior. State your assumptions.
+
+\end{problem}
+
+
+
+
+\begin{answer}{2}
+Using the equation from class, we know that:
+
+\begin{align*}
+  S_{mfp} = \frac{1}{n \cdot \sigma(\nu)}
+\end{align*}
+
+where $n$ is the number density of the scattering particle and $\sigma(\nu)$ is cross-sectional area of that scattering particle, which is a function of frequency. However, we know that in stellar interiors, scattering is almost entirely driven by electrons, whose effective cross-section is independent of frequency. Following the derivation given on Wikipedia's page on Thomson scattering, we find that the cross-sectional area of the electron is:
+
+$$ \sigma_{electron} = 6.65 \times 10^{-29} \text{m$^2$} $$
+
+To derive $n$, we assume that none of the helium has been ionized and that all the hydrogen has been, meaning that all our electrons come from ionized hydrogen. Consequently, the number density of hydrogen is the same as the number density of electrons. This value would thus be given by:
+
+\begin{align*}
+  n = \frac{\rho_{star} \text{(hydrogen fraction in star, X)}}{m_H}
+\end{align*}
+
+
+Assuming that we are looking at a solar-type star, we find from Wikipedia that:
+
+\begin{align*}
+  X &= 0.74 \\
+  \rho_{center} &= 150 \text{ g cm$^{-3}$} \\
+  m_H &= 1.67 \times 10^{-24} \text{ g} \\
+\end{align*}
+
+
+Consequently,
+\begin{align*}
+  n &= 6.61 \times 10^{25} \text{ cm$^{-3}$} \\
+  S_{mfp} &= 0.02 \text{ cm}
+\end{align*}
+
+
+It is worth noting here that for stellar density, we used the density of the Sun's core. In reality, of course, stellar densities have heavy radial dependence, and so we would expect this mean-free-path value to increase quickly further out in the star.
+
+\end{answer}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{problem}{3}
+What is the mean free path of a photon in the Universe just before it becomes transparent? Note that the main opacity source is electron scattering, that the free electrons come from ionized H atoms and that the composition of the Universe at this time is 75\% H and 25\% He (by mass). For definiteness, let's take the transition point to be the time when 50\% of the H atoms are ionized. [Hint: you will need to look up the current mass density of the Universe and the current temperature of the Universe (near 2.7 K, but you might want to be more exact).Then you will have to scale these back in time, accounting for the expansion of space. The scale factor is (z+1)$^{-1}$ where z is the redshift, defined as $\Delta \lambda \over \lambda$. For example, in the Universe today, z = 0, so the scale factor is 1. At z = 1, all lengths are 1/2 of what they are in today's Universe. By Wien's law, then, the Universe is hotter by a factor of 2. Its mass density is also higher by a factor of 2$^3$ = 8, since all that mass is packed into a volume that is smaller by that factor. So, you know how temperature and density scale with z. Therefore, first, find the value of z that leads to a 50\% ionization fraction when the Saha equation is applied. Then calculate the mean free path of photons under those conditions of density and temperature for the given composition.]
+
+\end{problem}
+
+
+\bigskip
+
+\begin{answer}{3}
+
+
+Ultimately, this problem, like the last one, is asking for mean free path length, so again we will need $\sigma_{mfp}$ and $n_{electrons}$. Conveniently, $\sigma_{mfp}$ remains the same, so we just need to find the electron number density. We notice that $n_e$ is hiding out in the Saha equation, so that will be a fine place to begin our journey.
+
+\begin{align*}
+  \frac{n_{i+1}}{n_i} = \frac{1}{n_e} (\frac{2 \pi m_e kT}{h^2})^{3 \over 2} \frac{2 U_{i+1}}{U_i} e^{\frac{-E_{ion}}{kT}}
+\end{align*}
+
+
+This would be quite a tough question, but by recognizing that, when the ionization fraction is 50\%, then:
+
+\begin{align*}
+  n_e = n_I = n_{II},
+\end{align*}
+
+
+things simplify quickly as the left hand side of the Saha equation reduces to 1, allowing us to pull over $n_{electrons}$ from the denominator of the right hand side and solve from there.
+
+\bigskip
+
+
+We would really like to find the value of Z that allows for that 50\% ionization fraction. To find it, we can recognize that there is a Z buried in the density of the Universe, which itself is just the sum of each element's densities. By recalling that we are told that for every unit mass of helium, there are three unit masses of hydrogen, then we can say that:
+
+\begin{align*}
+  \rho_{total} &= \rho_H + \rho_{He} \\
+               &= \rho_H + \frac{1}{3} \rho_H \\
+               &= \frac{4}{3} \rho_H
+\end{align*}
+
+To solve for the number of HI, HII, or electrons (since their number densities are all the same), we simply substitute $\rho = n_{total} m_H$. Finally, in order to get our equation to be given in terms of a Z value, $\rho_{today}(Z)$, can be expressed as $\rho_H(Z) = \rho_{today} \cdot A^{-3}$ where $A \equiv (Z + 1)^{-1}$. Consequently,
+
+\begin{align*}
+  \rho_{today} &= \frac{4}{3} m_H (n_I + n_{II}) \\
+               &= \frac{8}{3} m_H n_I \\
+  n_I &= \frac{3 \rho_{today}}{8 m_H A^3} = n_{electrons}
+\end{align*}
+
+Terrific! Now we're ready to take on the Saha equation, since we know the values for our $n$s. The only remaining subsitution we must make is recognizing that our temperature also gets changed with $A$, changing as $T(A) = {T_{today} \over A}$. With all these substitutions, the Saha equation becomes:
+
+\begin{align*}
+  n_{e} &= (\frac{2 \pi m_e kT}{h^2})^{1.5} \frac{2 U_{i+1}}{U_i} e^{\frac{-E_{ion}}{kT}} \\
+        &= \frac{3 \rho_{today}}{8 m_H A^3}
+\end{align*}
+
+
+As in last week's problem set, we will let the $U_i$ terms go to 1 since $U_{II} = 0.5$ and $U_I = 1$. We let $\rho_{today} = 4.55 \times 10^{-28} \text{ kg m$^{-3}$}$, $T_{today} = 2.73$ courtesy of COBE, and literature values for the remaining constants. We are now ready to make our substitutions for $T$ and solve out for $A$.
+
+
+\begin{align*}
+  \frac{3 \rho_{today}}{8 m_H A^3} &= (\frac{2 \pi m_e k}{h^2})^{1.5} (\frac{T_{today}}{A})^{1.5} e^{\frac{-13.6 A}{kT_{today}}} \\
+  \frac{1}{A^{3}} &= \frac{8 m_H}{3 \rho_{today}} (\frac{2 \pi m_e k}{h^2})^{1.5} (\frac{T_{today}}{A})^{1.5} e^{\frac{-13.6 A}{kT_{today}}} \\
+  A &= 1386
+\end{align*}
+
+
+
+Plugging all this into Wolfram Alpha, we find $A = 1386$, which in turn corresponds to a value of $n_e$ of:
+
+\begin{align*}
+  n_e &= \frac{3 \rho_{today}}{8 m_H A^3} \\
+      &= 2.72 \times 10^8 \text{ m$^{-3}$}
+\end{align*}
+
+Finally, we can plug that answer back into our original equation to find the mean free path length, using our original value of $\sigma = 6.65 \times 10^{-29} \text{ m$^{2}$}$ and recalling again that all scattering is caused by electrons.
+
+\begin{align*}
+  S_{mfp} &= \frac{1}{n \cdot \sigma(\nu)} \\
+          &= 5.54 \times 10^{19} \text{ m}
+\end{align*}
+
+
+
+
+\end{answer}
+
+
+\end{document}
