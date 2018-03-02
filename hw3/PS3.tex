@@ -1,0 +1,63 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{graphicx}
+ 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+ 
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+ 
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+ 
+\title{AST 231: Problem Set 3}
+\author{Answer Sheet}
+\maketitle
+ 
+\begin{problem}{1}
+What is the solid angle subtended by the portion of the celestial sphere between right ascension 0 hr and 1 hr and between declination 59 degrees and 60 degrees? Give your answer in square degrees. As always, show your work.
+\end{problem}
+
+\begin{answer}{1}
+Your answer goes here. 
+\end{answer}
+
+\begin{problem}{2}
+
+Estimate the mean free path of a photon in the stellar interior. State your assumptions. 
+
+\end{problem}
+
+\begin{answer}{2}
+Your answer goes here. 
+\end{answer}
+
+\begin{problem}{3}
+What is the mean free path of a photon in the Universe just before it becomes transparent? Note that the main opacity source is electron scattering, that the free electrons come from ionized H atoms and that the composition of the Universe at this time is 75\% H and 25\% He (by mass). For definiteness, let's take the transition point to be the time when 50\% of the H atoms are ionized. [Hint: you will need to look up the current mass density of the Universe (not including Dark Matter or Dark Energy! ... i.e. the ``baryonic" mass density) and the current temperature of the Universe (near 2.7 K, but you might want to be more exact). Then you will have to scale these back in time, accounting for the expansion of space. The scale factor is (z+1)$^{-1}$ where z is the redshift, defined as $\Delta \lambda \over \lambda$. For example, in the Universe today, z = 0, so the scale factor is 1. At z = 1, all lengths are 1/2 of what they are in today's Universe. By Wien's law, then, the Universe is hotter by a factor of 2. Its mass density is also higher by a factor of 2$^3$ = 8, since all that mass is packed into a volume that is smaller by that factor. So, you know how temperature and density scale with z. Therefore, first, find the value of z that leads to a 50\% ionization fraction when the Saha equation is applied. Then calculate the mean free path of photons under those conditions of density and temperature for the given composition.]
+
+\end{problem}
+
+\begin{answer}{3}
+Your answer goes here. 
+\end{answer}
+
+\begin{problem}{4}
+Use the Saha equation to compare the number density of H$^-$ atoms to the number density of HI atoms capable of absorbing in the Paaschen continuum in the solar atmosphere (i.e. n = 3 level HI atoms). Assume a temperature of 5800 K and an electron pressure of 20 dynes cm$^{-2}$, typical of an optical depth of about 2/3 in the solar photosphere.
+\end{problem}
+
+\begin{answer}{4}
+Your answer goes here. 
+\end{answer}
+ 
+\end{document}
