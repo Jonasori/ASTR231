@@ -7,6 +7,7 @@ Stellar
 
 import scipy.constants as c
 import numpy as np
+import matplotlib.pyplot as plt
 import astropy.units as u
 
 rho_0 = (4.55*10**(-31) * u.g * (u.cm)**-3).to(u.kg * u.m**-3)
@@ -46,9 +47,49 @@ s_mfp = 1/(n_e * sigma_electron)
 s_mfp
 
 
+1.ev2
+
+### PROBLEM 4 ###
+kB = 8.67e-5                 # eV/K
+T = 5800                    # Kelvin
+beta = 1/ (kB * T)
+
+def U():
+    u_ion_total = []
+    for n in range(1, 10):
+        g_n = 2*n**2
+        E_n = 13.6 * (1- n**-2)
+        u_ion_total.append(g_n * np.exp(-E_n /(kB * T)))
+
+    return sum(u_ion_total)
+    #return u_ion_total
+
+
+U()
+
+
+# Relative abundances: the Boltzmann eqation
+
+def boltz(n):
+    g_n = 2*n**2
+    E_n = 13.6 * (1- n**-2)
+    rel_abunds = (g_n/U()) * np.exp(-E_n * beta)
+    return rel_abunds
+
+boltz(3)
 
 
 
+ns = range(1, 10)
+ys = [boltz(n) for n in ns]
+plt.semilogy(ns, ys)
+plt.show()
+
+
+
+saha = 1.9e7
+
+1/(saha * boltz(3))
 
 
 # The End

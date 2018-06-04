@@ -1,0 +1,235 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      7857,        227]
+NotebookOptionsPosition[      6952,        192]
+NotebookOutlinePosition[      7304,        208]
+CellTagsIndexPosition[      7261,        205]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"p0", " ", "=", " ", "2"}], "\[IndentingNewLine]", 
+   RowBox[{"\[Epsilon]1", " ", "=", " ", 
+    RowBox[{"-", "0.55"}]}], "\[IndentingNewLine]", 
+   RowBox[{"\[Epsilon]2", " ", "=", " ", 
+    RowBox[{"-", "1.3"}]}], "\[IndentingNewLine]", 
+   RowBox[{"T", " ", "=", " ", "310"}], "\[IndentingNewLine]", 
+   RowBox[{"k", " ", "=", " ", 
+    RowBox[{"8.617", "*", 
+     SuperscriptBox["10", 
+      RowBox[{"-", "5"}]]}]}], "\[IndentingNewLine]", 
+   RowBox[{"\[Beta]", " ", "=", " ", 
+    FractionBox["1", 
+     RowBox[{"k", "*", "T"}]]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"n_avg2", "[", "P_", "]"}], ":=", 
+    FractionBox[
+     RowBox[{
+      FractionBox["P", "p0"], " ", "*", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox["P", "p0"], ")"}], "2"], "*", 
+      RowBox[{"Exp", "[", 
+       RowBox[{"\[Beta]", " ", "*", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"2", "*", "\[Epsilon]1"}], " ", "-", " ", "\[Epsilon]2"}], 
+         ")"}]}], " ", "]"}]}], 
+     RowBox[{"1", " ", "+", 
+      RowBox[{
+       FractionBox[
+        RowBox[{"2", "*", "P"}], "p0"], " ", "*", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["P", "p0"], ")"}], "2"], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{"\[Beta]", " ", "*", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"2", "*", "\[Epsilon]1"}], " ", "-", " ", "\[Epsilon]2"}], 
+          ")"}]}], "]"}]}]}]]}], "\[IndentingNewLine]", 
+   RowBox[{"n_avg2", "[", "1", "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.73126840218646*^9, 3.731268563433866*^9}, {
+  3.731268620580969*^9, 3.731268642100677*^9}, {3.73126875813013*^9, 
+  3.731268760671342*^9}, {3.731268799811091*^9, 3.73126882993823*^9}, {
+  3.73126981095251*^9, 3.731269816463112*^9}, {3.731270044237934*^9, 
+  3.731270047333621*^9}, {3.7312714753487387`*^9, 3.731271476211975*^9}}],
+
+Cell[BoxData["2"], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.731271753422123*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", "0.55`"}]], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.731271753433723*^9}}],
+
+Cell[BoxData[
+ RowBox[{"-", "1.3`"}]], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.731271753441321*^9}}],
+
+Cell[BoxData["310"], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.731271753449753*^9}}],
+
+Cell[BoxData["0.00008617000000000001`"], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.7312717534570713`*^9}}],
+
+Cell[BoxData["37.43537718014277`"], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.7312717534656267`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"n_avg2", "[", "1", "]"}]], "Output",
+ CellChangeTimes->{
+  3.731268566546008*^9, 3.731268624796362*^9, {3.731268827443701*^9, 
+   3.7312688363203382`*^9}, 3.731270068610969*^9, 3.731271479090364*^9, {
+   3.7312717361439667`*^9, 3.731271753472868*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.731268969421241*^9, 3.7312689775075693`*^9}, {
+  3.731270040849225*^9, 3.7312700426454782`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"n_avg", "[", "1.`", "]"}]], "Output",
+ CellChangeTimes->{3.731268974524269*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{{3.731268616573566*^9, 3.731268618835753*^9}, {
+  3.731268839481229*^9, 3.731268868773437*^9}}],
+
+Cell[BoxData["0.026712700000000006`"], "Output",
+ CellChangeTimes->{{3.731268841056272*^9, 3.731268866149392*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{"Plot", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"n_avg2", "[", "p", "]"}], "}"}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"p", ",", " ", "0", ",", " ", "3"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.7312685702836523`*^9, 3.731268595418359*^9}, {
+   3.731269787700295*^9, 3.7312698080543327`*^9}, 3.731270050432765*^9, {
+   3.731270896767931*^9, 3.7312709063274603`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  DisplayFunction->Identity,
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 1, 2][#]& )[
+         Part[#, 1]], 
+        (Part[{{Identity, Identity}, {Identity, Identity}}, 2, 2][#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{0, 3}, {0., 0.}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{{3.731268591482592*^9, 3.73126859587293*^9}, 
+   3.731268876200426*^9, {3.731270902343829*^9, 3.7312709068033524`*^9}, {
+   3.731271740377263*^9, 3.731271757596303*^9}}]
+}, Open  ]]
+},
+WindowSize->{808, 851},
+WindowMargins->{{4, Automatic}, {Automatic, 4}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1964, 48, 288, "Input"],
+Cell[2547, 72, 243, 4, 32, "Output"],
+Cell[2793, 78, 264, 5, 32, "Output"],
+Cell[3060, 85, 263, 5, 32, "Output"],
+Cell[3326, 92, 245, 4, 32, "Output"],
+Cell[3574, 98, 267, 4, 32, "Output"],
+Cell[3844, 104, 262, 4, 32, "Output"],
+Cell[4109, 110, 275, 5, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4421, 120, 145, 2, 32, InheritFromParent],
+Cell[4569, 124, 103, 2, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4709, 131, 160, 2, 54, InheritFromParent],
+Cell[4872, 135, 114, 1, 32, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[5023, 141, 448, 10, 54, "Input"],
+Cell[5474, 153, 1462, 36, 229, "Output"]
+}, Open  ]]
+}
+]
+*)
+
