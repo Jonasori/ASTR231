@@ -1,0 +1,131 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+
+\title{AST 231: Problem Set 5}
+\author{Your Name Goes Here}
+\maketitle
+
+\begin{problem}{1}
+Low mass white dwarfs have an equation of state that is independent of temperature, since they are entirely supported by electron degeneracy pressure. The fact that they are low mass means that relativistic effects do not need to be taken into account because the momenta of the supporting particles (electrons) are small enough. In the case of non-relativistic (complete) degeneracy, the equation of state can be written as: $$ P = K \rho^{5 \over 3}$$
+
+The value of K in this case is given in the Lecture Notes for Lecture 13 (non-relativistic case). \\
+
+a) Integrate the equations of stellar structure (hydrostatic equilibrium and mass conservation) to determine the mass and radius of a white dwarf that has a central density of 10$^5$ gm cm$^{-3}$. \\
+
+b) Find the mean density of this star. \\
+
+c) Give its mass in terms of solar masses and its radius in terms of both solar radii and Earth radii.
+
+[Note: For the numerical integration it is fine to use a simple ``Newton's method". You can vary the integration step size to see how it affects results. If any of you wish to do a more sophisticated integration, say using the Runge-Kutta or other method, you are most welcome to do so, but it is not necessary.]
+\end{problem}
+
+
+\begin{answer}{1}
+
+To solve this problem, we must simultaneously integrate the given equations: the equation of hydrostatic equilibrium (differential pressure) and of mass conservation (differential pressure)). To do so, I constructed a loop that, as long as pressure was above zero (i.e. we were still in the star) would take a radial step outward, calculate the contribution from the shell of thickness $dr$ between $r + dr$ (where $r$ is the sum of the steps visited so far), then multiply the differential equations for mass and pressure by this $dr$ to get $dM$ and $dP$, respectively. With can then sum these new differential quantities, like we did with with $r$, over all the steps through $r$, to get final values of $R, M$ and $P$.
+
+\bigskip
+\bigskip
+
+While it's not terribly worthwhile to go into the details of the code itself, it is worth noting the $\gamma$ dependence of the method used. Since both the equation of hydrostatic equilibium and mass conservation are functions of density, then we must find each shell's density as we iterate outwards through the star. This requires solving the polytropic equation of state, $ P = K \rho^{\gamma}$, using the value for $P$ from the previous step. Thus, $\gamma$ plays a crucial role in these calculations.
+
+\bigskip
+\bigskip
+
+Running the integrator for $\rho(0) = 10^5$, we find:
+
+\begin{align}
+  \text{Mass} &= 2.3 * 10^{22} \text{ kg}\\
+  \text{Radius} &= 4.6 * 10^{4} \text{ meters}
+\end{equation}
+
+
+\bigskip
+\bigskip
+
+We find the mean density by dividing the total mass by the total volume, or:
+
+\begin{align}
+  \rho &= \frac{3V}{4\pi R^3} \\
+       &= 56712391 \text{kg m$^{-3}$}
+\end{align}
+
+
+Finally, using simple math (or WolframAlpha), we can convert our mass and radius to solar and terrestrial units
+
+\begin{align}
+  \text{Mass} &= 6.7 * 10^{-5} M_{\bigodot}\\
+  \text{Radius} &= 1.2 * 10^{-8} R_{\bigodot}\\
+         &= 0.004 R_{\bigoplus}
+\end{align}
+
+
+\end{answer}
+
+
+
+
+
+
+
+
+\begin{problem}{2} Now consider the case of a very high mass white dwarf, in which relativistic effects result in a somewhat different equation of state, namely the one applicable to complete ultra-relativistic degeneracy. From the lecture notes, we have in this case:
+$$  P = K \rho^{4 \over 3}$$
+Again, see the lecture notes for Lecture 13 to get the value of K (ultra-relativistic case), which is different from the value for non-relativistic degeneracy. \\
+
+a) As before, integrate the equations of hydrostatic equilibrium and the mass equation to determine how the mass and radius of a star
+depend on central density over the range of 10$^9$ gm cm$^{-3}$ to 10$^{15}$ gm cm$^{-3}$. Note that those higher densities are about equal to the density of a neutron! \\
+
+b) What is the maximum possible mass of a white dwarf star, according to your calculations? Note that you have calculated the Chandrasekhar mass limit for a white dwarf.
+\end{problem}
+
+
+
+\begin{answer}{2}
+
+For this problem, we can use all the same code as before, while simply changing the constants $\gamma$, $K$, and $\rho(0)$. Integrating with these values gives:
+
+\bigskip
+(Mass is obviously set optimistically right now)
+\begin{center}
+    \begin{tabular}{ | l | l | l | p{5cm} |}
+    \hline
+    $\rho$  & Radius $(R_{\bigodot})$ & Mass $(M_{\bigodot})$\\ \hline
+    $10^9$  & 11C                     & 1.4 \\ \hline
+    $10^10$ & 10C                     & 1.4 \\ \hline
+    $10^11$ & 10C                     & 1.4 \\ \hline
+    $10^12$ & 10C                     & 1.4 \\ \hline
+    $10^13$ & 10C                     & 1.4 \\ \hline
+    $10^14$ & 10C                     & 1.4 \\ \hline
+    $10^15$ & 10C                     & 1.4 \\ \hline
+    \end{tabular}
+\end{center}
+
+
+\bigskip
+\bigskip
+
+
+\end{answer}
+
+\end{document}

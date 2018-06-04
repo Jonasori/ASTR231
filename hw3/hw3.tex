@@ -22,9 +22,11 @@
 %Or just google stuff
 
 \title{AST 231: Problem Set 3}
-\author{Answer Sheet}
+\author{Jonas Powell}
 \maketitle
 
+
+\iffalse
 \begin{problem}{1}
 What is the solid angle subtended by the portion of the celestial sphere between right ascension 0 hr and 1 hr and between declination 59 degrees and 60 degrees? Give your answer in square degrees. As always, show your work.
 \end{problem}
@@ -191,17 +193,169 @@ Finally, we can plug that answer back into our original equation to find the mea
 \end{align*}
 
 \end{answer}
+ \fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 
 
 \begin{problem}{4}
+  % (1/(2.5e10 m^-3)) * ( (2*pi * electron mass * boltzmann constant * 5800 Kelvin)/(planck constant squared))^1.5 * 2 * exp((-(13.6/9) eV + 0.75 eV)/(boltzmann constant * 5800 Kelvin))
 Use the Saha equation to compare the number density of H$^-$ atoms to the number density of HI atoms capable of absorbing in the Paaschen continuum in the solar atmosphere (i.e. n = 3 level HI atoms). Assume a temperature of 5800 K and an electron pressure of 20 dynes cm$^{-2}$, typical of an optical depth of about 2/3 in the solar photosphere.
 \end{problem}
 
 \begin{answer}{4}
-Your answer goes here.
+
+In this problem, we are looking for the ratio:
+
+\begin{align}
+  \frac{n_{H^-}}{n_{HIII}}
+\end{align}
+
+
+We recognize that by combining the Saha and Boltzman equations, we can find that identity:
+
+\begin{align}
+  \frac{1}{\text{Saha $\times$ Boltzmann }} = \frac{n_{H^-}}{n_{HI}} \times \frac{n_{H_I}}{n_{HIII}} = \frac{n_{H^-}}{n_{HIII}}
+\end{align}
+
+
+Therefore, we must evaluate the two equations.
+
+\bigskip
+\textbf{Boltzmann Equation: } We begin by evaluating the Boltzmann Equation:
+
+\begin{align}
+  \frac{n_{H_I}}{n_{HIII}} = \frac{g_i}{U_i} e^{\frac{E_{ion}}{kT}}
+\end{align}
+
+where $U_n$ (the partition function) and $g_n$ are given by:
+
+\begin{align}
+  U &= \sum_{n=1}^{\infty} g_n e^{\frac{E_{ion}}{kT}} \notag \\
+  g &= 2n^2 \notag \\
+  E_{ion} &= 13.6 (1 - \frac{1}{n^2}) \text{ eV}
+\end{align}
+
+
+We then plug in some values. Since we are interested in the $n = 3$ state, we set $n$ as such in our equations:
+
+\begin{align}
+  g &= 18 \notag \\
+  U &= 2 \notag \\
+  \frac{n_{H_I}}{n_{HIII}} &= 3.26 \times 10^{-10}
+\end{align}
+
+
+\bigskip
+
+
+
+\textbf{Saha Equation: } We can now approach the Saha equation similarly:
+
+\begin{align*}
+  \frac{n_{H^-}}{n_{HI}} = \frac{1}{n_e} (\frac{2 \pi m_e kT}{h^2})^{3 \over 2} \frac{2 U_{i+1}}{U_i} e^{\frac{-E_{ion}}{kT}}
+\end{align*}
+
+
+From the given electron pressure, we can use the Ideal Gas Law $P = nKT$ to solve for the number density of electrons, finding:
+
+\begin{align*}
+  n_{electrons} &= \frac{20 \text{ dyne cm$^{-2}$}}{k_B \cdot 5800 \text{ Kelvin}} \\
+                &= 2.50 \times 10^{19} \text{ m$^{-3}$}
+\end{align*}
+
+We let $U_{H^-} = U_{HI} = 2$ using our partition function-finder from earlier. For our ionization energy, we recognize that we are interested in the amount of energy required to ionize an atom already in the $n=3$ state.
+\begin{align}
+  E_{ion} = 0.75 \text{ eV}
+\end{align}
+
+Plugging in the remaining constants, we find:
+
+\begin{align}
+  \frac{n_{H^-}}{n_{HI}} = 1.9 \times 10^{7}
+\end{align}
+
+
+\textbf{Putting it Together: } Finally, we can again refer back to (1) and substitute our values:
+
+
+\begin{align}
+  \frac{n_{H^-}}{n_{HIII}} &= \frac{1}{\text{[Boltzmann] $\times$ [Saha]}} \\
+                           &= (3.26 \times 10^{-10}) (1.9 \times 10^{7}) \\
+                           &= 161
+\end{align}
+
+
+
+This tells us that there are far more hydrogen anions than hydrogen in the $n = 3$ state in a star of solar temperature. This feels a little strange, given how hard it seems like it would be to make a hydrogen anion, but I would remind the suspicious reader that in reality it is very hard to develop a significant population of atoms in the $n=3$ state at our relatively low temperature, as evidenced by the enormous imbalance between ionization levels that the Boltzmann equation gives us. With so few such energized atoms, it makes sense that we could find a ration on the order of 100:1 between these two unique flavors of hydrogen.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\iffalse
+We begin again with the Saha equation:
+
+\begin{align*}
+  \frac{n_{i+1}}{n_i} = \frac{1}{n_e} (\frac{2 \pi m_e kT}{h^2})^{3 \over 2} \frac{2 U_{i+1}}{U_i} e^{\frac{-E_{ion}}{kT}}
+\end{align*}
+
+From our given electron pressure, we can use the Ideal Gas Law $P = nKT$ to solve for the number density of electrons, finding:
+
+\begin{align*}
+  n_{electrons} &= \frac{20 \text{ dyne cm$^{-2}$}}{k_B \cdot 5800 \text{ Kelvin}} \\
+                &= 2.50 \times 10^{19} \text{ m$^{-3}$}
+\end{align*}
+
+
+From lecture, we learned that the statistical weight of $H^-$ is $g_{H^-} = 2$.
+
+We now plug this information into the Saha equation, using the energy required to ionize a neutral hydrogen atom in the n=3 state, $E_{ion} = 0.75 eV$
+
+\begin{align}
+  (1/(2.5e19 m^-3)) * ( (2*pi * electron mass * boltzmann constant * 5800 Kelvin)/(planck constant squared))^1.5 * 2 * exp((- 0.75 eV)/(boltzmann constant * 5800 Kelvin))
+    &= 1.9 \times 10^{7}
+\end{align}
+
+
+After finding this ratio, we then want to only look at atoms that are in the n=3 energy state. For this, we can use the Boltzmann equation, which defines the ratio of abundances of each multiple
+
+
+Saha
+
+Saha/boltzmann = 1.77e6
+
+
+
+To find this ratio, we must use both the Saha and Boltzman equations: first, from the Saha equation, we find the ratio of anions to neutral hydrogen, $\frac{n_{H^-}}{n_H}$. Since we want
+\fi
+
 \end{answer}
 
 \end{document}

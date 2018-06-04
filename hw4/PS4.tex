@@ -1,0 +1,139 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{graphicx}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+%If you want to title your bold things something different just make another thing exactly like this but replace "problem" with the name of the thing you want, like theorem or lemma or whatever
+
+\newenvironment{answer}[2][Answer]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\begin{document}
+
+%\renewcommand{\qedsymbol}{\filledbox}
+%Good resources for looking up how to do stuff:
+%Binary operators: http://www.access2science.com/latex/Binary.html
+%General help: http://en.wikibooks.org/wiki/LaTeX/Mathematics
+%Or just google stuff
+
+\title{AST 231: Problem Set 4}
+\author{Jonas Powell}
+\maketitle
+
+\begin{problem}{1}
+
+Calculate the mean molecular weight for the following gasses: \\
+
+a) Pure Hydrogen, which is 100\% neutral \\
+
+b) Pure Hydrogen, which is 100\% ionized \\
+
+c) Pure Hydrogen, which is 50\% neutral and 50\% ionized \\
+
+d) Neutral gas that is 75\% Hydrogen and 25\% Helium \\
+
+e) Fully ionized gas that is 75\% Hydrogen and 25\% Helium \\
+
+f) Fully ionized gas that is 73\% Hydrogen, 25\% Helium and 2\% metals \\
+
+
+[Hints and Notes: Fraction refer to �mass fractions� not �number fractions�, i.e. 75\% Hydrogen means that 75\% of the MASS of the star is Hydrogen, not that 75\% of the atoms are Hydrogen. Remember that �mean molecular weight� ($\mu$) is given in units of the mass
+of a hydrogen atom. Hence, it is unitless itself. In these calculations, you can consider the mass of a hydrogen atom to be 1, whether
+neutral or ionized, since the mass of the electron is negligible. Free electrons add numbers of particles but no significant mass. Hence,
+ionization reduces the mean molecular weight. Helium atoms can be taken to be of mass 4. Metal atoms are dominated by Carbon and
+Oxygen, and can be assumed to have mass 16. Fully ionized metal atoms can be assumed to have 1 electron and 1 neutron for every
+proton. The difference in mass between the proton and the neutron may be neglected in these calculations.]
+\end{problem}
+
+\begin{answer}{1}
+
+  For this problem, we use the equations from the book. For ionized gas, we find:
+
+  \begin{align*}
+    \mu = \frac{2}{3X + \frac{Y}{2} + 1}
+  \end{align*}
+
+  while for neutral gas we have:
+
+  \begin{align*}
+    \mu = \frac{1}{X + \frac{Y}{4}}
+  \end{align*}
+
+  and for an ionized gas with a metal fraction,
+
+  \begin{align*}
+    \mu = (2X + \frac{3Y}{4} + \frac{Z}{2})^{-1}
+  \end{align*}
+
+  Consequently, we find solutions of:
+
+  a) 1 \\
+
+  b) 0.5 \\
+
+  c) $\frac{2}{3}$ \\
+
+  d) 1.23 \\
+
+  e) 0.59 \\
+
+  f) 0.6 \\
+
+\end{answer}
+
+
+
+
+
+
+\begin{problem}{2}
+The Kelvin-Helmholtz time, often referred to as just the ``Kelvin time", is the length of time it would take a star to radiate away an energy equal to one-half of its current gravitational potential energy, assuming it was radiating at its current luminosity. As a star contracts, it puts one-half of the energy gained into thermal (kinetic) energy of its particles, satisfying the Virial Theorem. That leaves one-half to radiate away. As discussed in class and in your text book, stable, gravitationally bound, systems (stars, clusters of stars, clusters of galaxies, etc.) always have a time averaged gravitational potential energy that is twice the size of their time averaged kinetic energy. Before it was recognized that stars have internal energy sources (nuclear fusion), it was thought that their only means of gaining energy was by contracting under their own self-gravity and the Kelvin time was thought to be the full lifetime of the star. Now we recognize it as the pre-main sequence lifetime ... the time it takes the star to get hot enough inside to begin nuclear fusion. Calculate the Kelvin time for the Sun using its current luminosity and the fact that pre-main sequence stars are fully convective and, therefore obey the $P \propto \rho^\gamma$ ``polytropic" relationship, with $\gamma = {5 \over 3}$.
+
+\bigskip
+
+[Hint: You will need to find a relationship between gravitational potential energy (also known as ``Binding Energy") and polytropic index. You will find this buried in the extensive supplementary material on polytropes that is linked on our course Web site.]
+\end{problem}
+
+\begin{answer}{2}
+
+We begin by recognizing that luminosity is defined as:
+
+$$ \text{Luminosity} = \frac{\text{Energy}}{\text{Time}} $$
+\bigskip
+
+and consequently,
+
+$$ \text{Time} = \frac{\text{Energy}}{\text{Luminosity}} $$
+\bigskip
+
+From the problem's definition, we know that half the body's energy is thermal and so dissipated, so we need to get rid of the other half in the form of binding energy. This binding energy is given by:
+
+
+\begin{align*}
+  \Omega &= \frac{-3}{5-n}  \frac{G M_{\odot}^{2}}{R_{\odot}}
+\end{align*}
+\bigskip
+
+Here, n is the polytropic index, given by $n = \frac{1}{\gamma - 1}$. Since we are given $\gamma = \frac{5}{3}$, then $n = \frac{3}{2}$.
+
+
+Following the equation above, we need simply to divide this quantity by the Sun's luminosity and mulitply by $\frac{1}{2}$ to get the Kelvin-Helmholtz timescale:
+
+\begin{align*}
+  T_{KH} &= \frac{1}{2} \frac{\Omega(n=\frac{3}{2})_\odot}{L_{\odot}} \\
+         &= 13.4 \text{million years}
+\end{align*}
+
+
+
+
+
+\end{answer}
+
+
+\end{document}
